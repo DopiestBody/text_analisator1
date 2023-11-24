@@ -15,11 +15,16 @@ words = text.split()
 char_frequency = {}
 longest_word=words[0]
 shortest_word=words[0]
+word_frequency = {}
 for word in words:
     if len(word) > len(longest_word):
         longest_word=word
     if len(word) < len(shortest_word):
         shortest_word = word
+    if word in word_frequency:
+        word_frequency[word]+=1
+    else:
+        word_frequency[word] = 1
 for char in text:
     # частота символов считается тут
     if char in  char_frequency:
@@ -34,5 +39,8 @@ print("Самое длинное слово:", longest_word)
 print("Самое короткое слово:",  shortest_word)
 
 print("Частота символов:")
+print("Частота слов:" )
 for char, frequency in char_frequency.items():
     print(f"{char}: {frequency}")
+for word, frequency in word_frequency.items():
+    print(f"{word}: {frequency}")
